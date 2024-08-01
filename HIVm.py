@@ -23,13 +23,14 @@ def fetch_sequences(query, retmax=10):
 hiv_sequences = fetch_sequences("HIV-1[organism]", retmax=5)
 SeqIO.write(hiv_sequences, "hiv_sequences.fasta", "fasta")
 
+#align script 
 
 def align_sequences(input_file, output_file):
     os.system(f"clustalo -i {input_file} -o {output_file} --force --outfmt=clu")
 
 align_sequences("hiv_sequences.fasta", "aligned_hiv_sequences.clustal")
 
-#visualize
+#visualize script
 
 def plot_mutations(mutations):
     df = pd.DataFrame(mutations, columns=["Sequence", "Position", "Reference Base", "Mutant Base"])
